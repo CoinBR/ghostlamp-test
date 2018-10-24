@@ -1,55 +1,64 @@
 import React, {Component} from 'react';
 import FirebaseService from "../../services/FirebaseService"
 
-import {MuiThemeProvider} from "material-ui/styles/index";
-import {AppBar, Toolbar, Typography, Card, CardContent, CardActions, Button} from "material-ui";
-import {createMuiTheme} from 'material-ui/styles';
-import red from 'material-ui/colors/red';
+import { withStyles } from '@material-ui/core/styles';
+import {AppBar, Toolbar, Typography, Card, CardContent, CardActions, Button, CardActionArea, CardMedia} from "@material-ui/core";
 
-const theme = createMuiTheme({
-    palette: {
-        primary: red,
-    },
-});
+
+const styles = {
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+};
+
 
 class App extends Component {
 
-state = {
-    test: ['loading...']
-};
+  state = {
+      test: ['loading...']
+  };
 
   render() {
+    const { classes } = this.props;
     return (
-        <MuiThemeProvider theme={theme}>
-            <React.Fragment>
-                <AppBar position="static">
-                    <Toolbar>
-                        <Typography type="title" color="inherit">
-                            I ❤ TV
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                <Card>
-                  <CardContent>
-                    <Typography color="textSecondary" gutterBottom>
-                      t1
-                    </Typography>
-                    <Typography variant="h5" component="h2">
-                      t2
-                    </Typography>
-                    <Typography color="textSecondary">
-                      sbt
-                    </Typography>
-                    <Typography component="p">
-                      {this.state.test}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button variant="contained" color="primary">Learn More</Button>
-                  </CardActions>
-                </Card>                      
-            </React.Fragment>
-        </MuiThemeProvider>
+      <React.Fragment>
+          <AppBar position="static">
+              <Toolbar>
+                  <Typography type="title" color="inherit">
+                      I ❤ TV
+                  </Typography>
+              </Toolbar>
+          </AppBar>
+          <Card className={classes.card}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
+                title="Contemplative Reptile"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Lizard
+                </Typography>
+                <Typography component="p">
+                  Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                  across all continents except Antarctica
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button size="small" color="primary">
+                Share
+              </Button>
+              <Button size="small" color="primary">
+                Learn More
+              </Button>
+            </CardActions>
+          </Card>                     
+      </React.Fragment>
     );
   }
   componentDidMount() {
@@ -57,4 +66,4 @@ state = {
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
