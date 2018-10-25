@@ -24,13 +24,7 @@ class TVShowList extends Component {
       <React.Fragment>
         {
           this.state.objs.map((obj) => {
-            return  <TVShowCard
-              id={obj.id}
-              name={obj.name}
-              description={obj.description}
-              isFavorite={obj.isFavorite}
-              isFinished={obj.isFinished}
-            />
+            return  <TVShowCard obj={obj} />
           })
         }     
       </React.Fragment>

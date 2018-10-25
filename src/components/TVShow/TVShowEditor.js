@@ -73,6 +73,10 @@ export default class TVShowEditor extends React.Component {
     this.resetObj();
   }
 
+  componentDidMount() {
+    return;
+  }  
+
   render() {
     return (
       <div>

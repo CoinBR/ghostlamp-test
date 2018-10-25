@@ -24,8 +24,6 @@ class TVShowCard extends Component {
       test: ['loading...']
   };
 
-
-
   render() {
     const { classes } = this.props;
     return (
@@ -35,15 +33,15 @@ class TVShowCard extends Component {
             <CardActionArea>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  {this.props.name}
+                  {this.props.obj.name}
                 </Typography>
                 <Typography component="p">
-                  {this.props.description}
+                  {this.props.obj.description}
                 </Typography>
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <FavoriteIcon display={this.props.isFavorite} />
+              <FavoriteIcon display={this.props.obj.isFavorite} />
               <Button size="small" color="primary">
                 Learn More
               </Button>
