@@ -2,9 +2,12 @@ import React, {Component} from 'react';
 import FirebaseService from "../../services/FirebaseService"
 
 import { withStyles } from '@material-ui/core/styles';
-import {AppBar, Toolbar, Typography, Card, CardContent, CardActions, Button, CardActionArea, CardMedia} from "@material-ui/core";
+import {AppBar, Toolbar, Typography} from "@material-ui/core";
+import AddIcon from '@material-ui/icons/Add';
+
 
 import TVShowList from '../TVShow/TVShowList'
+import TVShowAdd from '../TVShow/TVShowAdd';
 
 const styles = {
   card: {
@@ -22,15 +25,16 @@ class App extends Component {
     const { classes } = this.props;
     return (
       <React.Fragment>
-          <AppBar position="static">
-              <Toolbar>
-                  <Typography type="title" color="inherit">
-                      I ❤ TV
-                  </Typography>
-              </Toolbar>
-          </AppBar>
-         
-         <TVShowList />                   
+        <AppBar position="static">
+            <Toolbar>
+                <Typography type="title" color="inherit">
+                    I ❤ TV
+                </Typography>
+            </Toolbar>
+        </AppBar>
+       
+        <TVShowList />
+        <TVShowAdd />
       </React.Fragment>
     );
   }

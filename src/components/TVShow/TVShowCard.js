@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar, Typography, Card, CardContent, CardActions, Button, CardActionArea, CardMedia} from "@material-ui/core";
 import { Star } from '@material-ui/icons';
 
-import TVShowEditor from './TVShowEditor'
+import TVShowEdit from './TVShowEdit'
 
 const styles = {
   card: {
@@ -42,7 +42,7 @@ class TVShowCard extends Component {
             </CardActionArea>
             <CardActions>
               <FavoriteIcon display={this.props.obj.isFavorite} />
-              <TVShowEditor obj={this.props.obj} />
+              <TVShowEdit obj={this.props.obj} />
             </CardActions>
           </Card>                     
       </React.Fragment>

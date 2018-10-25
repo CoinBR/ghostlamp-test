@@ -11,9 +11,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-export default class TVShowEditor extends React.Component {
+export default class TVShowForm extends React.Component {
   state = {
-    open: false,
     operation: 'Add',
 
     obj: {
@@ -52,17 +51,14 @@ export default class TVShowEditor extends React.Component {
     this.setState({ "obj": obj});
   };
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
 
   submit = () => {
     const endpoint = 'tv-shows/'
 
     // save on firebase
     if (this.state.operation === "Add"){
-      FirebaseService.post(endpoint, this.state.obj); 
+      FirebaseService.post(endpoint, this.state.obj);
+      this.resetObj(); 
     }
     else{
       FirebaseService.update(endpoint, this.state.obj);
@@ -72,7 +68,7 @@ export default class TVShowEditor extends React.Component {
   }
 
   closeForm = () => {
-    this.setState({ open: false }); // close modal
+    this.props.closeForm(); // close modal
   }
 
   prepareToEdit(){
@@ -90,11 +86,11 @@ export default class TVShowEditor extends React.Component {
 
   render() {
     return (
-      <div>
-        <Button onClick={this.handleClickOpen}>Edit</Button>
+      <React.Fragment>
+        {this.props.visualButton}      
         <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
+          open={this.props.open}
+          onClose={this.closeForm}
           aria-labelledby="form-dialog-title"
         >
           <DialogTitle id="form-dialog-title">{this.state.operation} TV Show</DialogTitle>
@@ -153,7 +149,7 @@ export default class TVShowEditor extends React.Component {
             </Button>
           </DialogActions>
         </Dialog>
-      </div>
+      </React.Fragment>
     );
   }
 }
