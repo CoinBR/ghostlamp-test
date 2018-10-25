@@ -3,49 +3,47 @@ import FirebaseService from "../../services/FirebaseService"
 
 import { withStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar, Typography, Card, CardContent, CardActions, Button, CardActionArea, CardMedia} from "@material-ui/core";
-
+import { Star } from '@material-ui/icons';
 
 const styles = {
   card: {
     maxWidth: 345,
-  },
-  media: {
-    height: 140,
+    margin: 20,
   },
 };
 
+function FavoriteIcon(props){
+  if (props.display){
+    return <Star color="primary" />;
+  }  
+}
 
-class Show extends Component {
+class TVShowCard extends Component {
 
   state = {
       test: ['loading...']
   };
 
+
+
   render() {
     const { classes } = this.props;
     return (
       <React.Fragment>
+        
           <Card className={classes.card}>
             <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
-                title="Contemplative Reptile"
-              />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  Lizard
+                  {this.props.name}
                 </Typography>
                 <Typography component="p">
-                  Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                  across all continents except Antarctica
+                  {this.props.description}
                 </Typography>
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
-                Share
-              </Button>
+              <FavoriteIcon display={this.props.isFavorite} />
               <Button size="small" color="primary">
                 Learn More
               </Button>
@@ -59,4 +57,4 @@ class Show extends Component {
   }
 }
 
-export default withStyles(styles)(App);
+export default withStyles(styles)(TVShowCard);

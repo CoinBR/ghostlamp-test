@@ -4,6 +4,7 @@ import FirebaseService from "../../services/FirebaseService"
 import { withStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar, Typography, Card, CardContent, CardActions, Button, CardActionArea, CardMedia} from "@material-ui/core";
 
+import TVShowList from '../TVShow/TVShowList'
 import TVShowEditor from '../TVShow/TVShowEditor'
 
 const styles = {
@@ -18,10 +19,6 @@ const styles = {
 
 class App extends Component {
 
-  state = {
-      test: ['loading...']
-  };
-
   render() {
     const { classes } = this.props;
     return (
@@ -34,12 +31,10 @@ class App extends Component {
               </Toolbar>
           </AppBar>
          
+         <TVShowList />
          <TVShowEditor />                   
       </React.Fragment>
     );
-  }
-  componentDidMount() {
-    FirebaseService.get('tests', (fbData) => this.setState({test: fbData}));
   }
 }
 
