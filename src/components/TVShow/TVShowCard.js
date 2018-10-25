@@ -5,6 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar, Typography, Card, CardContent, CardActions, Button, CardActionArea, CardMedia} from "@material-ui/core";
 import { Star } from '@material-ui/icons';
 
+import TVShowEditor from './TVShowEditor'
+
 const styles = {
   card: {
     maxWidth: 345,
@@ -13,9 +15,7 @@ const styles = {
 };
 
 function FavoriteIcon(props){
-  if (props.display){
-    return <Star color="primary" />;
-  }  
+   return (props.display) ? <Star color="primary" /> : "";
 }
 
 class TVShowCard extends Component {
@@ -42,9 +42,7 @@ class TVShowCard extends Component {
             </CardActionArea>
             <CardActions>
               <FavoriteIcon display={this.props.obj.isFavorite} />
-              <Button size="small" color="primary">
-                Learn More
-              </Button>
+              <TVShowEditor obj={this.props.obj} />
             </CardActions>
           </Card>                     
       </React.Fragment>

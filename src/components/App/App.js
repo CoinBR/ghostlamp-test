@@ -5,7 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar, Typography, Card, CardContent, CardActions, Button, CardActionArea, CardMedia} from "@material-ui/core";
 
 import TVShowList from '../TVShow/TVShowList'
-import TVShowEditor from '../TVShow/TVShowEditor'
 
 const styles = {
   card: {
@@ -31,8 +30,7 @@ class App extends Component {
               </Toolbar>
           </AppBar>
          
-         <TVShowList />
-         <TVShowEditor />                   
+         <TVShowList />                   
       </React.Fragment>
     );
   }

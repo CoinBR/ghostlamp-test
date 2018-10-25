@@ -58,29 +58,40 @@ export default class TVShowEditor extends React.Component {
 
 
   submit = () => {
-    this.setState({ open: false }); // close modal
+    const endpoint = 'tv-shows/'
 
     // save on firebase
     if (this.state.operation === "Add"){
-      FirebaseService.post('tv-shows/', this.state.obj);
+      FirebaseService.post(endpoint, this.state.obj); 
+    }
+    else{
+      FirebaseService.update(endpoint, this.state.obj);
     }
 
     this.closeForm();
-  }  
+  }
 
   closeForm = () => {
     this.setState({ open: false }); // close modal
-    this.resetObj();
+  }
+
+  prepareToEdit(){
+    this.setState({
+      obj: this.props.obj,
+      operation: 'Edit',
+      });
   }
 
   componentDidMount() {
-    return;
+    if (this.props.obj){
+      this.prepareToEdit();  
+    }
   }  
 
   render() {
     return (
       <div>
-        <Button onClick={this.handleClickOpen}>Add New TV Show</Button>
+        <Button onClick={this.handleClickOpen}>Edit</Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -138,7 +149,7 @@ export default class TVShowEditor extends React.Component {
               Cancel
             </Button>
             <Button onClick={this.submit} color="primary">
-              {this.state.operation}
+              Save
             </Button>
           </DialogActions>
         </Dialog>
