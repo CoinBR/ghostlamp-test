@@ -5,8 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar, Typography} from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
 
-
-import TVShowList from '../TVShow/TVShowList'
+import LeftMenu from './AppLeftMenu';
+import TVShowList from '../TVShow/TVShowList';
 import TVShowAdd from '../TVShow/TVShowAdd';
 
 const styles = {
@@ -27,9 +27,10 @@ class App extends Component {
       <React.Fragment>
         <AppBar position="static">
             <Toolbar>
-                <Typography type="title" color="inherit">
-                    I ❤ TV
-                </Typography>
+              <LeftMenu />
+              <Typography type="title" color="inherit">
+                  I ❤ TV
+              </Typography>
             </Toolbar>
         </AppBar>
        
