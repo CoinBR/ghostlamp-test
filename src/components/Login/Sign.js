@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Redirect } from 'react-router-dom';
 import { FirebaseApp } from '../../services/Firebase/Firebase';
-import { User } from '../../services/Firebase/Firebase'
+import { User } from '../../services/Firebase/Firebase';
 
 import { PATHS } from '../App/routes';
 import Form from './Form'
