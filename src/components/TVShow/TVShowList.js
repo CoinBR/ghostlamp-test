@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import FirebaseService from "../../services/FirebaseService"
+import FirebaseREST from '../../services/Firebase/FirebaseREST';
 import convertIndexedObjsToArray from "../../utils/convertIndexedObjsToArray"
 
 import TVShowCard from '../TVShow/TVShowCard'
@@ -14,7 +14,7 @@ class TVShowList extends Component {
   };
 
   getObjs = () => {
-    FirebaseService.get('tv-shows', (objs) => {
+    FirebaseREST.get('tv-shows', (objs) => {
       this.setState( {'objs': convertIndexedObjsToArray(objs)} );
     });
   }
