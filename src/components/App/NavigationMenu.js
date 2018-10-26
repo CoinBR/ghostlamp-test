@@ -42,9 +42,9 @@ class NavigationMenu extends React.Component {
     const links = (
       <List className={classes.list}>
         <Link to={PATHS.myTVShows}>
-            <ListItem button key="placeholder">            
+            <ListItem button key={PATHS.myTVShows}>            
                 <ListItemIcon><InboxIcon/></ListItemIcon>
-                <ListItemText primary="placeholder" />
+                <ListItemText primary="My TV Shows" />
             </ListItem>
         </Link>
       </List>
