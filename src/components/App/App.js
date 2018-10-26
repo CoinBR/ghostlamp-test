@@ -22,7 +22,9 @@ class App extends Component {
                 </Typography>
               </Toolbar>
           </AppBar>
-          <Route exact path={PATHS.myTVShows} component={TVShowList} />
+          <div>
+            <Route exact path={PATHS.myTVShows} component={TVShowList} />
+          </div>
         </div> 
       </BrowserRouter>
     );

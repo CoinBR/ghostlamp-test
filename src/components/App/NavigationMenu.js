@@ -9,6 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import { PATHS } from './routes';
 
@@ -42,7 +43,7 @@ class NavigationMenu extends React.Component {
       <List className={classes.list}>
         <Link to={PATHS.myTVShows}>
             <ListItem button key="placeholder">            
-                <ListItemIcon><InboxIcon /></ListItemIcon>
+                <ListItemIcon><InboxIcon/></ListItemIcon>
                 <ListItemText primary="placeholder" />
             </ListItem>
         </Link>
@@ -51,7 +52,9 @@ class NavigationMenu extends React.Component {
 
     return (
         <div>
-          <Button onClick={this.toggleDrawer('left', true)}>botao</Button>
+          <Button onClick={this.toggleDrawer('left', true)}>
+            <MenuIcon />
+          </Button>
           <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
             <div
               tabIndex={0}
