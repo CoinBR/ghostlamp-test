@@ -2,9 +2,13 @@ import React from "react";
 import { FirebaseApp } from '../../services/Firebase/Firebase';
 import { User } from '../../services/Firebase/Firebase'
 
+import { Button, TextField} from "@material-ui/core";
+import { Typography, Card, CardContent, CardActions, CardActionArea } from "@material-ui/core";
+import { withStyles } from '@material-ui/core/styles';
+
 import { PATHS } from '../App/routes';
 
-export default class Register extends React.Component {
+class Register extends React.Component {
   
   handleRegister = async event => {
     event.preventDefault();
@@ -20,29 +24,48 @@ export default class Register extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
-      <div>
-        <h1>Login</h1>
-        <form onSubmit={this.handleRegister}>
-          <label>
-            Email
-            <input
-              name="email"
-              type="email"
-              placeholder="Email"
-            />
-          </label>
-          <label>
-            Password
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-            />
-          </label>
-          <button type="submit">Login </button>
-        </form>
-      </div>
+      <form onSubmit={this.handleRegister}>
+        <Card className={classes.root}>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              Login
+            </Typography>
+            <Typography component="p">
+                <TextField name="email" type="email" label="E-Mail" 
+                    placeholder="myaddress@gmail.com" autofocus/>
+                <TextField name="password" type="password" label="Password" 
+                    placeholder="*******" autofocus/>
+            </Typography>
+          </CardContent>
+          <CardActions className={classes.actions}>
+            <Button type="submit" variant="contained" color="primary">Login</Button>
+          </CardActions>  
+        </Card>
+      </form>
+      
     );
   }
 }
+
+const styles = theme => ({
+  root: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
+    width: 250,
+    margin: 33,
+    background: "#EEEEEE",
+    display: "block",
+    "text-align": "center",
+  },
+
+  actions: {    
+    display: "block",
+    "text-align": "right",
+  },
+
+});
+
+export default withStyles (styles)(Register);
