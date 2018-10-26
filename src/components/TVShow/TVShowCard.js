@@ -6,6 +6,7 @@ import { Typography, Card, CardContent, CardActions, CardActionArea } from "@mat
 import { Star } from '@material-ui/icons';
 
 import TVShowEdit from './TVShowEdit'
+import TVShowDelete from './TVShowDelete'
 
 const styles = {
   card: {
@@ -42,6 +43,7 @@ class TVShowCard extends Component {
             </CardActionArea>
             <CardActions>
               <FavoriteIcon display={this.props.obj.isFavorite} />
+              <TVShowDelete obj={this.props.obj} />              
               <TVShowEdit obj={this.props.obj} />
             </CardActions>
           </Card>                     

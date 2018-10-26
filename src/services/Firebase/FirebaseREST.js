@@ -20,4 +20,9 @@ export default class FirebaseREST {
     ref.set(objWithoutID);
     return obj.id;
   }
+ 
+  static delete(nodePath, obj) {
+    const ref = FirebaseDB.ref(nodePath + obj.id);
+    return ref.remove();
+  }
 };
