@@ -1,6 +1,7 @@
 import React from "react";
 import { FirebaseApp } from '../../services/Firebase/Firebase';
 
+import { PATHS } from '../App/routes';
 
 export default class Register extends React.Component {
   
@@ -11,7 +12,7 @@ export default class Register extends React.Component {
       const user = await FirebaseApp
         .auth()
         .createUserWithEmailAndPassword(email.value, password.value);
-      this.props.history.push("/");
+      this.props.history.push(PATHS.myTVShows);
     } catch (error) {
       alert(error);
     }

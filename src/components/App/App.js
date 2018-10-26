@@ -1,15 +1,36 @@
 import React, {Component} from 'react';
 import { BrowserRouter, Route} from 'react-router-dom';
+import { FirebaseApp } from '../../services/Firebase/Firebase'
 
 import {AppBar, Toolbar, Typography} from "@material-ui/core";
 
 import NavigationMenu from './NavigationMenu';
-import { PATHS } from './routes';
 import TVShowList from '../TVShow/TVShowList'
 import Register from '../Login/Register'
+import { PATHS } from './routes';
+import PrivateRoute from './PrivateRoute';
+
 
 
 class App extends Component {
+
+  state = {
+    user: null,
+  }
+
+  componentWillMount() {
+    FirebaseApp.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          user: user,
+        });
+      } else {
+        this.setState({
+          user: null
+        });
+      }
+    });
+  }
 
   render() {
     return (
@@ -24,7 +45,7 @@ class App extends Component {
               </Toolbar>
           </AppBar>
           <div>
-            <Route exact path={PATHS.myTVShows} component={TVShowList} />
+            <PrivateRoute exact path={PATHS.myTVShows} component={TVShowList} authenticated={this.state.user} />
             <Route exact path={PATHS.register} component={Register} />
           </div>
         </div> 
