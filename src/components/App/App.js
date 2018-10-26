@@ -8,8 +8,7 @@ import NavigationMenu from './NavigationMenu';
 import TVShowList from '../TVShow/TVShowList'
 import { PATHS } from './routes';
 import { PrivateRoute, PropsRoute } from './SpecialRoutes';
-import Register from '../Login/Register';
-import Login from '../Login/Login';
+import Sign from '../Login/Sign';
 import Logout from '../Login/Logout';
 
 
@@ -29,8 +28,8 @@ class App extends Component {
               </Toolbar>
           </AppBar>
           <div className={classes.routeView}>
-            <Route exact path={PATHS.register} component={Register} />
-            <Route exact path={PATHS.login} component={Login} />  
+            <PropsRoute exact path={PATHS.register} component={Sign} operation="Register" />
+            <PropsRoute exact path={PATHS.login} component={Sign} operation="Login" />  
             <Route exact path={PATHS.logout} component={Logout} />           
             <PrivateRoute exact path={PATHS.landing} component={TVShowList} />
             <PrivateRoute exact path={PATHS.myTVShows} component={TVShowList} />

@@ -9,29 +9,35 @@ import { withStyles } from '@material-ui/core/styles';
 
 import { PATHS } from '../App/routes';
 
-class Register extends React.Component {
-  
-  handleRegister = async event => {
-    event.preventDefault();
-    const { email, password } = event.target.elements;
-    try {
-      const user = await FirebaseApp
-        .auth()
-        .signInWithEmailAndPassword(email.value, password.value);
-      this.props.history.push(PATHS.myTVShows);
-    } catch (error) {
-      alert(error);
+class Form extends React.Component {
+
+  isInTheRightOperation = () => {
+    let msg;
+    let link;
+    if (this.props.operation === "Register" ){
+      msg = "Already have an Account?";
+      link = PATHS.login;
     }
-  };
+    else{
+      msg = "Don't have an Account yet?";
+      link = PATHS.register;
+    }
+
+    return (
+      <Link to={link}>
+        <Typography component="p">{msg}</Typography>
+      </Link>); 
+  }
+             
 
   render() {
     const { classes } = this.props;
     return (
-      <form onSubmit={this.handleRegister} className={classes.center}>
+      <form onSubmit={this.props.proccessForm} className={classes.center}>
         <Card className={classes.root}>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              Login
+              {this.props.operation}
             </Typography>
             <Typography component="p">
                 <TextField name="email" type="email" label="E-Mail" 
@@ -41,12 +47,12 @@ class Register extends React.Component {
             </Typography>
           </CardContent>
           <CardActions className={classes.actions}>
-            <Button type="submit" variant="contained" color="primary">Login</Button>
+            <Button type="submit" variant="contained" color="primary">
+              {this.props.operation}
+            </Button>
           </CardActions>
           <CardActions className={classes.center}>
-            <Link to={PATHS.register}>
-              <Typography component="p"> Don't have an account yet?</Typography>
-            </Link>
+            {this.isInTheRightOperation()}
           </CardActions>    
         </Card>
       </form>
@@ -78,4 +84,4 @@ const styles = theme => ({
 
 });
 
-export default withStyles (styles)(Register);
+export default withStyles(styles)(Form);
