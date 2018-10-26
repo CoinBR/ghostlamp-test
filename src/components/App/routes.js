@@ -4,8 +4,7 @@ export const PATHS = {
   landing: '/',
   register: '/register',
   login: '/login',
-  account: '/account',
-  passwordForgot: '/forgot-password',
+  logout: '/logout',
 
   myTVShows: '/my-tvshows',
 };

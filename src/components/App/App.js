@@ -6,27 +6,33 @@ import {AppBar, Toolbar, Typography} from "@material-ui/core";
 
 import NavigationMenu from './NavigationMenu';
 import TVShowList from '../TVShow/TVShowList'
-import Register from '../Login/Register'
 import { PATHS } from './routes';
 import PrivateRoute from './PrivateRoute';
+import Register from '../Login/Register';
+import Login from '../Login/Login';
+import Logout from '../Login/Logout';
 
 
 
 class App extends Component {
 
-  state = {
-    user: null,
-  }
+  state = { 
+    loading: true, 
+    isAuthenticated: false, 
+    user: null 
+  };
 
   componentWillMount() {
     FirebaseApp.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({
+          isAuthenticated: true,
           user: user,
         });
       } else {
         this.setState({
-          user: null
+          isAuthenticated: false,
+          user: null,
         });
       }
     });
@@ -45,8 +51,11 @@ class App extends Component {
               </Toolbar>
           </AppBar>
           <div>
-            <PrivateRoute exact path={PATHS.myTVShows} component={TVShowList} authenticated={this.state.user} />
             <Route exact path={PATHS.register} component={Register} />
+            <Route exact path={PATHS.login} component={Login} />  
+            <Route exact path={PATHS.logout} component={Logout} />           
+            <PrivateRoute exact path={PATHS.landing} component={TVShowList} authenticated={this.state.isAuthenticated} />
+            <PrivateRoute exact path={PATHS.myTVShows} component={TVShowList} authenticated={this.state.isAuthenticated} />
           </div>
         </div> 
       </BrowserRouter>
