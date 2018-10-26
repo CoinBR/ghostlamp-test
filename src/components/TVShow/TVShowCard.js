@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import FirebaseService from "../../services/FirebaseService"
 
 import { withStyles } from '@material-ui/core/styles';
-import {AppBar, Toolbar, Typography, Card, CardContent, CardActions, Button, CardActionArea, CardMedia} from "@material-ui/core";
+import { Typography, Card, CardContent, CardActions, CardActionArea } from "@material-ui/core";
 import { Star } from '@material-ui/icons';
 
 import TVShowEdit from './TVShowEdit'
