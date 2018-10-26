@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import FirebaseService from "../../services/FirebaseService"
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar, Typography} from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
 
-import LeftMenu from './AppLeftMenu';
-import TVShowList from '../TVShow/TVShowList';
-import TVShowAdd from '../TVShow/TVShowAdd';
+
+import NavigationMenu from './NavigationMenu';
+import { PATHS } from './routes';
+import TVShowList from '../TVShow/TVShowList'
 
 const styles = {
   card: {
@@ -25,21 +26,19 @@ class App extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <React.Fragment>
-        <AppBar position="static">
-            <Toolbar>
-              <Router>
-                  <LeftMenu />
-              </Router>
-              <Typography type="title" color="inherit">
-                  I ❤ TV
-              </Typography>
-            </Toolbar>
-        </AppBar>
-       
-        <TVShowList />
-        <TVShowAdd />
-      </React.Fragment>
+      <BrowserRouter>
+        <div>
+          <AppBar position="static">
+              <Toolbar>
+                <NavigationMenu />
+                <Typography type="title" color="inherit">
+                    I ❤ TV
+                </Typography>
+              </Toolbar>
+          </AppBar>
+          <Route exact path={PATHS.myTVShows} component={TVShowList} />
+        </div> 
+      </BrowserRouter>
     );
   }
 }

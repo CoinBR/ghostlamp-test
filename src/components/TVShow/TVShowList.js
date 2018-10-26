@@ -4,6 +4,7 @@ import FirebaseService from "../../services/FirebaseService"
 import convertIndexedObjsToArray from "../../utils/convertIndexedObjsToArray"
 
 import TVShowCard from '../TVShow/TVShowCard'
+import TVShowAdd from '../TVShow/TVShowAdd'
 
 
 class TVShowList extends Component {
@@ -26,7 +27,8 @@ class TVShowList extends Component {
           this.state.objs.map((obj) => {
             return  <TVShowCard obj={obj} />
           })
-        }     
+        }
+        <TVShowAdd />     
       </React.Fragment>
     );
   }
