@@ -6,7 +6,7 @@ import {AppBar, Toolbar, Typography} from "@material-ui/core";
 import NavigationMenu from './NavigationMenu';
 import TVShowList from '../TVShow/TVShowList'
 import { PATHS } from './routes';
-import PrivateRoute from './PrivateRoute';
+import { PrivateRoute, PropsRoute } from './SpecialRoutes';
 import Register from '../Login/Register';
 import Login from '../Login/Login';
 import Logout from '../Login/Logout';
