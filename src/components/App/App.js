@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import FirebaseService from "../../services/FirebaseService"
 
 import { withStyles } from '@material-ui/core/styles';
@@ -27,7 +28,9 @@ class App extends Component {
       <React.Fragment>
         <AppBar position="static">
             <Toolbar>
-              <LeftMenu />
+              <Router>
+                  <LeftMenu />
+              </Router>
               <Typography type="title" color="inherit">
                   I ❤ TV
               </Typography>
