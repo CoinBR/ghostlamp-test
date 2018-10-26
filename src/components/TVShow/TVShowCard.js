@@ -13,7 +13,14 @@ const styles = {
     maxWidth: 345,
     margin: 20,
   },
+
+  finishedCard: {
+    maxWidth: 345,
+    margin: 20,
+    opacity: 0.5,
+  },
 };
+
 
 function FavoriteIcon(props){
    return (props.display) ? <Star color="primary" /> : "";
@@ -25,12 +32,18 @@ class TVShowCard extends Component {
       test: ['loading...']
   };
 
+
+  getCardClass = () => {
+    const clsName = this.props.obj.isFinished ? 'finishedCard' : 'card';
+    return this.props.classes[clsName];
+  }  
+
   render() {
     const { classes } = this.props;
     return (
       <React.Fragment>
         
-          <Card className={classes.card}>
+          <Card className={this.getCardClass()}>
             <CardActionArea>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
