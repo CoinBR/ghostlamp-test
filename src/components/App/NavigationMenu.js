@@ -53,6 +53,12 @@ class NavigationMenu extends React.Component {
                 <ListItemText primary="Register" />
             </ListItem>
         </Link>
+        <Link to={PATHS.login}>
+            <ListItem button key={PATHS.login}>            
+                <ListItemIcon><InboxIcon/></ListItemIcon>
+                <ListItemText primary="Login" />
+            </ListItem>
+        </Link>
         <Link to={PATHS.logout}>
             <ListItem button key={PATHS.logout}>            
                 <ListItemIcon><InboxIcon/></ListItemIcon>
@@ -60,6 +66,7 @@ class NavigationMenu extends React.Component {
             </ListItem>
         </Link>
       </List>
+
     );
 
     return (

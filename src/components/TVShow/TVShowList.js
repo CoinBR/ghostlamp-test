@@ -32,6 +32,9 @@ class TVShowList extends Component {
       if (objs) {
         this.setState( {'objs': convertIndexedObjsToArray(objs)} );
       }
+      else {
+        this.setState( {'objs': []} );
+      }
     });
   }
 
