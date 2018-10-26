@@ -1,5 +1,6 @@
 import React from 'react';
 import FirebaseREST from '../../services/Firebase/FirebaseREST';
+import { GetUser } from '../../services/Firebase/Firebase'
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -53,7 +54,7 @@ export default class TVShowForm extends React.Component {
 
 
   submit = () => {
-    const endpoint = 'tv-shows/'
+    const endpoint = 'tv-shows/' + GetUser().uid + '/';
 
     // save on firebase
     if (this.state.operation === "Add"){

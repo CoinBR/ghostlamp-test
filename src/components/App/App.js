@@ -32,7 +32,7 @@ class App extends Component {
             <Route exact path={PATHS.login} component={Login} />  
             <Route exact path={PATHS.logout} component={Logout} />           
             <PrivateRoute exact path={PATHS.landing} component={TVShowList} />
-            <PrivateRoute exact bbbbbb="asd" path={PATHS.myTVShows} component={TVShowList} />
+            <PrivateRoute exact path={PATHS.myTVShows} component={TVShowList} />
           </div>
         </div> 
       </BrowserRouter>

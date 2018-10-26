@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 
+import { GetUser } from '../../services/Firebase/Firebase'
 import FirebaseREST from '../../services/Firebase/FirebaseREST';
 import convertIndexedObjsToArray from "../../utils/convertIndexedObjsToArray"
 
 import TVShowCard from '../TVShow/TVShowCard'
 import TVShowAdd from '../TVShow/TVShowAdd'
-
 
 class TVShowList extends Component {
 
@@ -14,7 +14,8 @@ class TVShowList extends Component {
   };
 
   getObjs = () => {
-    FirebaseREST.get('tv-shows', (objs) => {
+    const endpoint = 'tv-shows/' + GetUser().uid;
+    FirebaseREST.get(endpoint, (objs) => {
       this.setState( {'objs': convertIndexedObjsToArray(objs)} );
     });
   }
@@ -22,10 +23,9 @@ class TVShowList extends Component {
   render() {
     return (
       <React.Fragment>
-        <p>{JSON.stringify(this.props)}</p>
         {
           this.state.objs.map((obj) => {
-            return  <TVShowCard obj={obj} />
+            return <TVShowCard obj={obj} />
           })
         }
         <TVShowAdd />     
