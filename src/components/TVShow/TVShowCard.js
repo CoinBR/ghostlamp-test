@@ -10,13 +10,15 @@ import TVShowDelete from './TVShowDelete'
 
 const styles = {
   card: {
-    maxWidth: 345,
+    Width: 300,
     margin: 20,
+    float: "left",
   },
 
   finishedCard: {
-    maxWidth: 345,
+    Width: 300,
     margin: 20,
+    float: "left",
     opacity: 0.5,
   },
 };
