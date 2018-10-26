@@ -13,21 +13,32 @@ class TVShowList extends Component {
     objs: [],
   };
 
+  isListOk = (lst) => { return !(typeof lst == 'undefined' || !lst || !lst.length); }
+
+  listObjs = () => {
+
+    if (!this.isListOk(this.state.objs)) {
+      return <b>Click in the Plus sign, on the bottom right of the page to add your first card</b>;
+    }
+
+    return this.state.objs.map((obj) => {
+      return <TVShowCard obj={obj} />
+    })
+  }
+
   getObjs = () => {
     const endpoint = 'tv-shows/' + GetUser().uid;
     FirebaseREST.get(endpoint, (objs) => {
-      this.setState( {'objs': convertIndexedObjsToArray(objs)} );
+      if (objs) {
+        this.setState( {'objs': convertIndexedObjsToArray(objs)} );
+      }
     });
   }
 
   render() {
     return (
       <React.Fragment>
-        {
-          this.state.objs.map((obj) => {
-            return <TVShowCard obj={obj} />
-          })
-        }
+        {this.listObjs()}
         <TVShowAdd />     
       </React.Fragment>
     );
