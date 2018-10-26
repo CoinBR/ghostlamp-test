@@ -1,5 +1,6 @@
 import React from "react";
 import { FirebaseApp } from '../../services/Firebase/Firebase';
+import { User } from '../../services/Firebase/Firebase'
 
 import { PATHS } from '../App/routes';
 

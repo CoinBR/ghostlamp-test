@@ -22,6 +22,7 @@ class TVShowList extends Component {
   render() {
     return (
       <React.Fragment>
+        <p>{JSON.stringify(this.props)}</p>
         {
           this.state.objs.map((obj) => {
             return  <TVShowCard obj={obj} />

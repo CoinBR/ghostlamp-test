@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { BrowserRouter, Route} from 'react-router-dom';
-import { FirebaseApp } from '../../services/Firebase/Firebase'
 
 import {AppBar, Toolbar, Typography} from "@material-ui/core";
 
@@ -15,28 +14,6 @@ import Logout from '../Login/Logout';
 
 
 class App extends Component {
-
-  state = { 
-    loading: true, 
-    isAuthenticated: false, 
-    user: null 
-  };
-
-  componentWillMount() {
-    FirebaseApp.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({
-          isAuthenticated: true,
-          user: user,
-        });
-      } else {
-        this.setState({
-          isAuthenticated: false,
-          user: null,
-        });
-      }
-    });
-  }
 
   render() {
     return (
@@ -54,8 +31,8 @@ class App extends Component {
             <Route exact path={PATHS.register} component={Register} />
             <Route exact path={PATHS.login} component={Login} />  
             <Route exact path={PATHS.logout} component={Logout} />           
-            <PrivateRoute exact path={PATHS.landing} component={TVShowList} authenticated={this.state.isAuthenticated} />
-            <PrivateRoute exact path={PATHS.myTVShows} component={TVShowList} authenticated={this.state.isAuthenticated} />
+            <PrivateRoute exact path={PATHS.landing} component={TVShowList} />
+            <PrivateRoute exact bbbbbb="asd" path={PATHS.myTVShows} component={TVShowList} />
           </div>
         </div> 
       </BrowserRouter>
