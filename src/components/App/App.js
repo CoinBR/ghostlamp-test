@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { BrowserRouter, Route} from 'react-router-dom';
 
 import {AppBar, Toolbar, Typography} from "@material-ui/core";
+import { withStyles } from '@material-ui/core/styles';
 
 import NavigationMenu from './NavigationMenu';
 import TVShowList from '../TVShow/TVShowList'
@@ -15,6 +16,7 @@ import Logout from '../Login/Logout';
 class App extends Component {
 
   render() {
+    const { classes } = this.props;
     return (
       <BrowserRouter>
         <div>
@@ -26,7 +28,7 @@ class App extends Component {
                 </Typography>
               </Toolbar>
           </AppBar>
-          <div>
+          <div className={classes.routeView}>
             <Route exact path={PATHS.register} component={Register} />
             <Route exact path={PATHS.login} component={Login} />  
             <Route exact path={PATHS.logout} component={Logout} />           
@@ -39,4 +41,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const styles = theme => ({
+  center: {
+    display: "block",
+    "text-align": "center",
+  },
+});
+
+export default withStyles (styles)(App);

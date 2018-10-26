@@ -26,7 +26,7 @@ class Register extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <form onSubmit={this.handleRegister}>
+      <form onSubmit={this.handleRegister} className={classes.center}>
         <Card className={classes.root}>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
@@ -55,15 +55,19 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
     width: 250,
-    margin: 33,
+    margin: "7% 0% 0% 37%",
     background: "#EEEEEE",
-    display: "block",
     "text-align": "center",
   },
 
   actions: {    
     display: "block",
     "text-align": "right",
+  },
+
+  center: {
+    display: "block",
+    "text-align": "center",
   },
 
 });
