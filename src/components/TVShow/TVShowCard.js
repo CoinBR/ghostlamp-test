@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import FirebaseService from "../../services/FirebaseService"
+import FirebaseREST from '../../services/Firebase/FirebaseREST';
 
 import { withStyles } from '@material-ui/core/styles';
 import { Typography, Card, CardContent, CardActions, CardActionArea } from "@material-ui/core";
@@ -49,7 +49,7 @@ class TVShowCard extends Component {
     );
   }
   componentDidMount() {
-    FirebaseService.get('tests', (fbData) => this.setState({test: fbData}));
+    FirebaseREST.get('tests', (fbData) => this.setState({test: fbData}));
   }
 }
 

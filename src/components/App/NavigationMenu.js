@@ -47,6 +47,12 @@ class NavigationMenu extends React.Component {
                 <ListItemText primary="My TV Shows" />
             </ListItem>
         </Link>
+        <Link to={PATHS.register}>
+            <ListItem button key={PATHS.register}>            
+                <ListItemIcon><InboxIcon/></ListItemIcon>
+                <ListItemText primary="Register" />
+            </ListItem>
+        </Link>
       </List>
     );
 

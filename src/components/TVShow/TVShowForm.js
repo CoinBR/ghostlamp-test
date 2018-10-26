@@ -1,5 +1,5 @@
 import React from 'react';
-import FirebaseService from "../../services/FirebaseService"
+import FirebaseREST from '../../services/Firebase/FirebaseREST';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -57,11 +57,11 @@ export default class TVShowForm extends React.Component {
 
     // save on firebase
     if (this.state.operation === "Add"){
-      FirebaseService.post(endpoint, this.state.obj);
+      FirebaseREST.post(endpoint, this.state.obj);
       this.resetObj(); 
     }
     else{
-      FirebaseService.update(endpoint, this.state.obj);
+      FirebaseREST.update(endpoint, this.state.obj);
     }
 
     this.closeForm();

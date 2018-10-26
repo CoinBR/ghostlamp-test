@@ -2,8 +2,8 @@
 
 export const PATHS = {
   landing: '/',
-  signin: '/sigin',
-  signup: '/signup',
+  register: '/register',
+  login: '/login',
   account: '/account',
   passwordForgot: '/forgot-password',
 

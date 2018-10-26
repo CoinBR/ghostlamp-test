@@ -6,6 +6,7 @@ import {AppBar, Toolbar, Typography} from "@material-ui/core";
 import NavigationMenu from './NavigationMenu';
 import { PATHS } from './routes';
 import TVShowList from '../TVShow/TVShowList'
+import Register from '../Login/Register'
 
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
           </AppBar>
           <div>
             <Route exact path={PATHS.myTVShows} component={TVShowList} />
+            <Route exact path={PATHS.register} component={Register} />
           </div>
         </div> 
       </BrowserRouter>
