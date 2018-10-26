@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import { FirebaseApp } from '../../services/Firebase/Firebase';
 import { User } from '../../services/Firebase/Firebase'
 
@@ -41,7 +42,12 @@ class Register extends React.Component {
           </CardContent>
           <CardActions className={classes.actions}>
             <Button type="submit" variant="contained" color="primary">Login</Button>
-          </CardActions>  
+          </CardActions>
+          <CardActions className={classes.center}>
+            <Link to={PATHS.register}>
+              <Typography component="p"> Don't have an account yet?</Typography>
+            </Link>
+          </CardActions>    
         </Card>
       </form>
       
